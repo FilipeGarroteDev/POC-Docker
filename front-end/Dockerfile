@@ -1,12 +1,19 @@
-FROM node
+FROM node:16
 
-WORKDIR /src/usr/
+WORKDIR /tmp/react
 
 COPY . .
 
-EXPOSE 5000
-
 RUN npm i
+
+RUN chmod a+x /tmp/react/node_modules/.bin/react-scripts
+
 RUN npm run build
 
-CMD ["npm", "start"]
+RUN mkdir -p /var/www/html
+
+RUN mv build/* /var/www/html
+
+WORKDIR /
+
+RUN rm -rf /tmp/react
