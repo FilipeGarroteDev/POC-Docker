@@ -1,0 +1,15 @@
+{
+	"name": "docker-poc",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"docker:start": "docker-compose --env-file ./back-end/.env up --build",
+		"docker:down": "docker-compose --env-file ./back-end/.env down",
+		"docker:clear": "docker-compose --env-file ./back-end/.env down -v && docker system prune -a -f --volumes"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC"
+}
